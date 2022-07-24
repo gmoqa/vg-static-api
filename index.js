@@ -15,17 +15,17 @@ app.get('/snes', (req, res) => {
 })
 
 app.get('/snes/USA', (req, res) => {
-    const games = snes.filter(game => game.region === 'NA');
+    const games = snes.filter(game => game.region === 'USA');
     res.json(games);
 })
 
 app.get('/snes/EUR', (req, res) => {
-    const games = snes.filter(game => game.region === 'EU');
+    const games = snes.filter(game => game.region === 'EUR');
     res.json(games);
 })
 
 app.get('/snes/JAP', (req, res) => {
-    const games = snes.filter(game => game.region === 'JP');
+    const games = snes.filter(game => game.region === 'JAP');
     res.json(games);
 })
 
