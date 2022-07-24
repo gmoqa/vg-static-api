@@ -10,21 +10,21 @@ app.get('', (req, res) => {
     res.json('Welcome to VG Static API');
 })
 
-app.get('/snes', (req, res) => {
+app.get('/SNES', (req, res) => {
     res.json(snes);
 })
 
-app.get('/snes/USA', (req, res) => {
+app.get('/SNES/USA', (req, res) => {
     const games = snes.filter(game => game.region === 'USA');
     res.json(games);
 })
 
-app.get('/snes/EUR', (req, res) => {
+app.get('/SNES/EUR', (req, res) => {
     const games = snes.filter(game => game.region === 'EUR');
     res.json(games);
 })
 
-app.get('/snes/JAP', (req, res) => {
+app.get('/SNES/JAP', (req, res) => {
     const games = snes.filter(game => game.region === 'JAP');
     res.json(games);
 })
