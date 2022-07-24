@@ -1,36 +1,25 @@
 const express = require('express');
 const helmet = require('helmet');
-const snes = require('./snes.json');
+const morgan = require('morgan');
+
+const snes = require('./SNES/all.json');
 
 const app = express();
 
 app.use(helmet());
+app.use(morgan('tiny'));
+
+app.use('/SNES', express.static(__dirname + '/SNES/all.json'));
+app.use('/SNES/USA', express.static(__dirname + '/SNES/usa.json'));
+app.use('/SNES/EUR', express.static(__dirname + '/SNES/eur.json'));
+app.use('/SNES/JAP', express.static(__dirname + '/SNES/jap.json'));
 
 app.get('', (req, res) => {
     res.json('Welcome to VG Static API');
 })
 
-app.get('/SNES', (req, res) => {
-    res.json(snes);
-})
-
-app.get('/SNES/USA', (req, res) => {
-    const games = snes.filter(game => game.region === 'USA');
-    res.json(games);
-})
-
-app.get('/SNES/EUR', (req, res) => {
-    const games = snes.filter(game => game.region === 'EUR');
-    res.json(games);
-})
-
-app.get('/SNES/JAP', (req, res) => {
-    const games = snes.filter(game => game.region === 'JAP');
-    res.json(games);
-})
-
 app.use((req, res, next) => {
-    res.status(404);
+    res.status(404).end();
 });
 
 const PORT = process.env.PORT || 3000;
