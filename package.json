@@ -4,6 +4,7 @@
     "helmet": "^5.1.1"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   }
 }
